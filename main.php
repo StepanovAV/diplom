@@ -16,6 +16,7 @@
 </div>
 
 <!-- здесь будут что-то... -->
+<?php include_once "php.php"?>
 <script>
 	var log = document.getElementById("login");
 	var pass = document.getElementById("password");
