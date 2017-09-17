@@ -1,23 +1,23 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>Антиплагіат</title>
+<title>Антиплагиат</title>
   <meta charset="utf-8">
   <!--<link rel="stylesheet" href="Style.css"/> -->
 </head>
 <body>
 
-<!-- форма для отправки сообщений -->
+<!-- форма для входа -->
 <div id="loginform">
   <div>SIGN UP</div>
-  <input type="text" id="login" name="login" placeholder="username">
+  <input type="text" id="login" name="login" placeholder="username" value="admin">
   <input type="password" id="password" name="password" placeholder="password">
   <input type="submit" id="submit" value="LOGIN"/>
 </div>
 
-<!-- Подключаю жс и пхп... -->
+<!-- Подключаю js и php... -->
 <?php include_once "php.php"?>
 
-<div id="exx" style="display: none";>Вы успешно залогинились</div>
+<div id="exx" style="display: none";>Здесь будет имя пользователя после успешного входа</div>
 </body>
 </html>
