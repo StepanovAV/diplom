@@ -19,5 +19,7 @@
 <?php include_once "php.php"?>
 
 <div id="exx" style="display: none";>Здесь будет имя пользователя после успешного входа</div>
+
+<img src="" id="icon" style="display: none; width: 200px; border-radius: 10px"/>
 </body>
 </html>

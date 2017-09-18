@@ -26,14 +26,17 @@
 
 	} 
 	
-	if ($result = mysqli_query($mysqli, 'SELECT name, surname FROM users')) { 
+	if ($result = mysqli_query($mysqli, 'SELECT name, surname, user_img FROM users')) { 
 
 	/* Передаем имя, фамилию с пхп в джаваскрипт переменные*/ 
 		while( $row = mysqli_fetch_assoc($result) ){ 
 			echo '<script>var name = "'.$row['name'].'";</script>';
 			echo '<script>var surname = "'.$row['surname'].'";</script>';
-		} 
+			echo '<script>var user_img = "data:image/jpeg;base64, '.base64_encode($row['user_img']).'";</script>';
+			//echo '<img src="data:image/jpeg;base64, '.base64_encode($row['user_img']).'" width="200" />';
 
+		} 
+		
 	} 
 	
 	/* Освобождаем используемую память */ 
@@ -43,6 +46,9 @@
 
 ?>
 <script>
+
+
+
 	var log = document.getElementById("login");
 	var pass = document.getElementById("password");
 	var submit = document.getElementById("submit");
@@ -55,6 +61,8 @@
 					exx.style.color = "green";
 					exx.innerHTML = "Это ваш аккаунт, " + name +" "+ surname;
 					document.getElementById('loginform').style.display = 'none';
+					document.getElementById("icon").src = user_img;
+					document.getElementById("icon").style.display = "";
 
 				}
 				else alert ("Я вас не знаю!");
