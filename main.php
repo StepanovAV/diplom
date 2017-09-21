@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <!--<link rel="stylesheet" href="Style.css"/> -->
 </head>
-<body>
+<body style="background-color: #edeef0">
 
 <!-- форма для входа -->
-<div id="loginform">
+<div id="loginform" style="background-color:#99b7d8; width: 412px"> 
   <div>SIGN UP</div>
   <input type="text" id="login" name="login" placeholder="username" value="admin">
   <input type="password" id="password" name="password" placeholder="password">
