@@ -1,7 +1,7 @@
 import sqlite3
 import docx2txt
 
-text = docx2txt.process('C:/Users/Artem/Desktop/curva.docx')
+text = docx2txt.process('C:/Users/Артем/Desktop/curva.docx')
 text = text.lower();
 text = text.replace('\n', ' ')
 text = text.replace(",", ' ')
