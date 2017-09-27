@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <title>Complete</title>
 </head>
-
 <body>
-<h1>File uploaded!</h1>
-<h2>{{ text }}</h2>
-	
+	<button id="button">Загрузить еще...</button>
+	<h1>File uploaded!</h1>
+	<h2>{{ text }}</h2>
 </body>
 </html>
+
+<script>
+	document.getElementById("button").onclick = function () {
+		window.location = "/" 
+	}
+</script>
