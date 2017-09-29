@@ -1,1 +1,18 @@
- adsasdasdasdasd
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete</title>
+</head>
+<body>
+	<button id="button">Загрузить еще...</button>
+	<h1>File uploaded!</h1>
+	<h2></h2>
+</body>
+</html>
+
+<script>
+	document.getElementById("button").onclick = function () {
+		window.location = "/" 
+	}
+</script>
