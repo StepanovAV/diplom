@@ -1,4 +1,4 @@
-import os, docx2txt, sqlite3, re
+import os, docx2txt, sqlite3, re, io, sys, pdfminer.high_level
 from flask import Flask, render_template, request, session, redirect, url_for, g
 
 __author__ = 'artem'
@@ -38,8 +38,7 @@ def replaceAll(text):
 	return text
 		
 
-def normalize():
-	text = docx2txt.process('../upload/downloads/file.docx')
+def normalize(text):		
 	text = replaceAll(text)
 	
 	result = []
@@ -100,15 +99,34 @@ def upload():
 			os.mkdir(target)
 			
 		for file in request.files.getlist("file"):
-			print(file)
-			filename = 'file.docx'
+			print('******************')
+			ex = str(file.filename)
+			ex = ex[-4:]
+			if ex == 'docx':
+				filename = 'file.docx'
+			elif ex == '.pdf':
+				filename = 'file.pdf'
+			
 			destination = "/".join([target, filename])
 			print(destination)
 			file.save(destination)
-					
-			text = normalize()
-			uploadToDb(text)
 			
+			if ex == 'docx':
+				text = docx2txt.process('../upload/downloads/file.docx')
+			
+			if ex == '.pdf':
+				orig_stdout = sys.stdout
+				sys.stdout = open('somefile.txt', 'w') 
+				with open('../upload/downloads/file.pdf', 'rb') as file:
+					pdfminer.high_level.extract_text_to_fp(file, sys.stdout)
+				sys.stdout.close()
+				sys.stdout	= orig_stdout
+				text = open('somefile.txt', 'r') 
+				text = text.read()
+				
+			text = normalize(text)
+			uploadToDb(text)
+		
 			return render_template("complete.html", text = text)	
 
 	return redirect(url_for('index'))
